@@ -1,0 +1,16 @@
+.btn__color a {
+    display: inline-block;
+    text-transform: uppercase;
+    color: #ff0040;
+    text-decoration: none;
+    border: 2px solid;
+    background: transparent;
+    padding: 10px 40px;
+    font-size: 14px;
+    font-weight: 700;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+    margin: 1rem; }
+  
+  .btn__color a:hover {
+    color: #0004ff; }
