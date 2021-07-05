@@ -52,12 +52,14 @@ while(opcion !== '5' ){
         case "4":
             num1 = parseFloat(prompt("ingrese el primer numero a dividir "))
             num2 = parseFloat(prompt("ingrese el segundo numero a dividir "))
-            alert("La division de "+ num1 + " dividido " + num2 + " es de: " + (num1/num2))
+            if (num2 != 0)
+                alert("La division de "+ num1 + " dividido " + num2 + " es de: " + (num1/num2))
+            else{alert("No se puede dividir por cero.")}
             break 
         default:    
             alert("Ha ingresado una opcion invalida")
             break
     }
-    opcion = prompt("Seleccione una operacion: 1-Sumar | 2-Restar | 3-Multiplicar | 4-Dividir , para finalizar ingrese 'ESC' ")
+    opcion = prompt("Seleccione una operacion: 1-Sumar | 2-Restar | 3-Multiplicar | 4-Dividir , para finalizar ingrese '5' ")
 
 } 
