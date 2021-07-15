@@ -77,7 +77,7 @@ while (cerrar){
     let accion = prompt('Elija una opcion a realizar: para agregar una persona esciba: agregar, para finalizar escriba: salir');
 
     if(accion === "agregar"){
-        person = agregarPersona();
+        let person = agregarPersona();
         alert(`Bienvenido ${person.mostrarMascota()}`);
     }else if(accion === "salir"){
         console.log("gracias por ingresar sus datos")
