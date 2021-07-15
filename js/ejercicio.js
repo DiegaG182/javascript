@@ -67,7 +67,7 @@ agregarPersona = () => {
         perro = prompt("ingrese el nombre de su mascota nombre"); 
     }else{perro = ""}
     const person = new Persona (nombre,edad,direccion,mail,rol,perro); 
-    alert(`se agrego a ${person.mostrarPerssona()} , y su mascota ${person.mostrarMascota()} `);
+    alert(`se agrego a ${person.mostrarPersona()} , y su mascota ${person.mostrarMascota()} `);
     return person;
 }
 
