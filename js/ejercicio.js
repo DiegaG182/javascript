@@ -1,12 +1,13 @@
 //Creacion de persona para app de entrega de perros
-
+personaId = 0;
+mascotaId = 0;
+paseoId = 0;
 class Persona{
-    personaId = 0;
     constructor (nombre,edad,direccion,mail,rol){
-        this.personaId = this.personaId++;
+        this.personaId = personaId++;
         this.nombre = nombre;
         this.edad = edad;
-        this.coordenadas = [direccion[0], direccion[1]];
+        this.coordenadas = direccion;
         this.mail = mail ;
         //Rol: true = Paseador | false = cliente
         this.rol = rol ;
@@ -26,9 +27,9 @@ class Persona{
 
 class Paseador extends Persona{
     paseosAgendados = [];
-    constructor(persona,dispoDiaria,dispoHoraria/* , cantidadDePaseos */){
+    constructor(nombre,edad,direccion,mail,dispoDiaria,dispoHoraria/* , cantidadDePaseos */){
         
-        super(persona.nombre,persona.edad,persona.direccion,persona.mail,true);
+        super(nombre,edad,direccion,mail,true);
         //Disponibilidad Diaria, marca los dias que puede pasear este paseador 
         this.dispoDiaria = dispoDiaria;
         //Disponibilidad Horaria, marca los turnos que puede pasear este paseador 
@@ -43,7 +44,8 @@ class Paseador extends Persona{
     }
     agendarPaseo(paseo){
         this.paseosAgendados.push(paseo);
-        console.log(`Se Ha agendado el paseo de ${paseo.idPaseo.mostrarNombrePersona()}`)
+        console.log(`Se Ha agendado el paseo de xxx`)
+        //${paseo.idPaseo.mostrarNombrePersona()}
     }
     obtenerPaseosAgendados(){
 
@@ -62,7 +64,6 @@ class Cliente extends Persona{
 
 
 class Mascota {
-    id = 0;
     constructor (ownerId,nombre,edad,raza){
         this.mascotaId = mascotaId++;
         this.ownerId = ownerId;
@@ -76,9 +77,8 @@ class Mascota {
 }
 
 class Paseo{
-    idPaseo = 0;
     constructor (mascotaId,paseadorId,diaPaseo,horaPaseo,direccionPaseo){
-        this.idPaseo = idPaseo++;
+        this.paseoId = paseoId++;
         this.mascotaId = mascotaId;
         this.paseadorId = paseadorId;
         this.diaPaseo = diaPaseo;
@@ -86,26 +86,27 @@ class Paseo{
         this.direccionPaseo = direccionPaseo;
     } 
     obtenerDia(){
-        switch (this.diaPaseo){
-            case 1:
+        console.log(this.diaPaseo);
+        switch (this.diaPaseo[0]){
+            case '1':
                 return 'Lunes'
                 break;
-            case 2:
+            case '2':
                 return 'Martes'
                 break;
-            case 3:
+            case '3':
                 return 'Miercoles'
                 break;
-            case 4:
+            case '4':
                 return 'Jueves'
                 break;
-            case 5:
+            case '5':
                 return 'Viernes'
                 break;
-            case 6:
+            case '6':
                 return 'Sabado'
                 break;
-            case 7:
+            case '7':
                 return 'Domingo'
                 break;
             default:
@@ -113,14 +114,16 @@ class Paseo{
         }
     }    
     obtenerTurno(){
-        switch (this.diaTurno){
-            case 1:
-                return 'Mañana'
+        console.log(this.horaPaseo[0]);
+        console.log("es un array de obtener turno");
+        switch (this.horaPaseo[0]){
+            case '1':
+            return 'Mañana'
                 break;
-            case 2:
+            case '2':
                 return 'Mediodia'
                 break;
-            case 3:
+            case '3':
                 return 'Tarde'
                 break;
             default:
@@ -130,13 +133,15 @@ class Paseo{
 }
 
 agregarPaseador = () => {
-    nombre = prompt("ingrese su nombre");
-    edad = parseInt(prompt("ingrese su edad"));
-    direccion = prompt("ingrese su direccion en formato coordenadas [latitud , longitud]");
-    mail = prompt("ingrese su mail");
-    rol =  true;
-    dispoDiaria = prompt("ingrese los dias que puede realizar un paseo");
-    dispoHoraria = prompt("ingrese los horarios que puede realizar un paseo");
+    let nombre = prompt("ingrese su nombre");
+    let edad = parseInt(prompt("ingrese su edad"));
+    let direccion = prompt("ingrese su direccion");
+    let mail = prompt("ingrese su mail");
+    let rol =  true;
+    let dispoDia = prompt("ingrese los dias que puede realizar un paseo");
+    let dispoDiaria = (Array.from(dispoDia))
+    let dispoHora = prompt("ingrese los horarios que puede realizar un paseo");
+    let dispoHoraria = (Array.from(dispoHora))
     const person = new Paseador (nombre,edad,direccion,mail,rol,dispoDiaria,dispoHoraria); 
     alert(`se agrego al paseador ${person.mostrarNombrePersona()} `);
     return person;
@@ -145,7 +150,7 @@ agregarPaseador = () => {
 agregarCliente = () => {
     nombre = prompt("ingrese su nombre");
     edad = parseInt(prompt("ingrese su edad"));
-    direccion = prompt("ingrese su direccion en formato coordenadas [latitud , longitud]");
+    direccion = prompt("ingrese su direccion");
     mail = prompt("ingrese su mail");
     
     const person = new Cliente (nombre,edad,direccion,mail); 
@@ -166,9 +171,10 @@ agregarMascota = (cliente) => {
 crearPaseo = (mascota,paseador,cliente) => {
     mascotaId = mascota.id;
     paseadorId = paseador.id;
-    diaPaseo = prompt("ingrese el dia que desea pasear a su mascota");
-    horaPaseo = prompt("ingrese el horario que desea pasear a su mascota");
+    diaPaseo = Array.from(prompt("ingrese el dia que desea pasear a su mascota"));
+    horaPaseo = Array.from(prompt("ingrese el horario que desea pasear a su mascota"));
     direccionPaseo = cliente.obtenerCoordenadas();
+    console.log(direccionPaseo);
     const paseo = new Paseo (mascotaId,paseadorId,diaPaseo,horaPaseo,direccionPaseo); 
     //agrega el paseo al paseador
     paseador.agendarPaseo(paseo);
@@ -181,34 +187,38 @@ crearPaseo = (mascota,paseador,cliente) => {
 
 
 let cerrar = true;
-
+const paseadores = [];
+const clientes = []
 while (cerrar){
     let accion = prompt('Elija una opcion a realizar: para agregar un Paseador esciba: paseador, para agregar un cliente escriba: cliente , para finalizar escriba: salir');
     let paseador;
     let person;
     let mascota;
-    const paseadores = {};
+
 
     switch (accion){
         case 'paseador':
             paseador = agregarPaseador();
             paseadores.push(paseador);
-            alert(`Bienvenido  ${paseador.mostrarNombrePersona()} a nuestra red de Paseadores`);
+            alert(`Bienvenid@  ${paseador.mostrarNombrePersona()} a nuestra red de Paseadores`);
+            break;
         case 'cliente':
             person = agregarCliente();
-            alert(`Bienvenido  ${person.mostrarNombrePersona()} a nuestra comunidad de Paseo para tu mascota`);
+            alert(`Bienvenid@  ${person.mostrarNombrePersona()} a nuestra comunidad de Paseo para tu mascota`);
             mascota = agregarMascota(person);
             paseo = prompt(`si desea Agregar un paseo para su mascota ${mascota.mostrarNombreMascota()} ecriba: si `)
-            if (paseo.toUpperCase() === 'SI' ){crearPaseo(mascota,paseador,person)}else{alert('Puede agregar su paseo cuando lo desee');}
-            break
+            if (paseo.toUpperCase() === 'SI' ){crearPaseo(mascota,paseadores[0],person)}else{alert('Puede agregar su paseo cuando lo desee');}
+            break;
         case 'paseo':
             crearPaseo(mascota,paseador,person);
             break;
         case 'salir':    
             console.log("gracias por utilizar nuestros servicios")
             cerrar = false;
+            break;
         default:
             alert('operacion invalida, por favor intentelo nuevamente');
             break;    
     }
+    
 }//while
