@@ -1,7 +1,7 @@
 //Creacion de persona para app de entrega de perros
-personaId = 0;
-mascotaId = 0;
-paseoId = 0;
+personaId = 1;
+mascotaId = 1;
+paseoId = 1;
 class Persona{
     constructor (nombre,edad,direccion,mail,rol){
         this.personaId = personaId++;
@@ -148,10 +148,10 @@ agregarPaseador = () => {
 }
 
 agregarCliente = () => {
-    nombre = prompt("ingrese su nombre");
-    edad = parseInt(prompt("ingrese su edad"));
-    direccion = prompt("ingrese su direccion");
-    mail = prompt("ingrese su mail");
+    let nombre = prompt("ingrese su nombre");
+    let edad = parseInt(prompt("ingrese su edad"));
+    let direccion = prompt("ingrese su direccion");
+    let mail = prompt("ingrese su mail");
     
     const person = new Cliente (nombre,edad,direccion,mail); 
     alert(`Bienvenid@  ${person.mostrarNombrePersona()} `);
@@ -159,22 +159,22 @@ agregarCliente = () => {
 }
 
 agregarMascota = (cliente) => {
-    ownerId = cliente.id;
-    nombre = prompt("ingrese el nombre de su mascota");
-    edad = parseInt(prompt("ingrese la edad de su mascota"));
-    raza = prompt("ingrese la raza de su mascota");
+    let ownerId = cliente.id;
+    let nombre = prompt("ingrese el nombre de su mascota");
+    let edad = parseInt(prompt("ingrese la edad de su mascota"));
+    let raza = prompt("ingrese la raza de su mascota");
     const mascota = new Mascota (ownerId,nombre,edad,raza); 
     alert(`se agrego a su  mascota ${mascota.mostrarNombreMascota()} `);
     return mascota;
 }
 
 crearPaseo = (mascota,paseador,cliente) => {
-    mascotaId = mascota.id;
-    paseadorId = paseador.id;
-    diaPaseo = Array.from(prompt("ingrese el dia que desea pasear a su mascota"));
-    horaPaseo = Array.from(prompt("ingrese el horario que desea pasear a su mascota"));
-    direccionPaseo = cliente.obtenerCoordenadas();
-    console.log(direccionPaseo);
+    let mascotaId = mascota.id;
+    let paseadorId = paseador.id;
+    let diaPaseo = Array.from(prompt("ingrese el dia que desea pasear a su mascota"));
+    let horaPaseo = Array.from(prompt("ingrese el horario que desea pasear a su mascota"));
+    let direccionPaseo = cliente.obtenerCoordenadas();
+    //console.log(direccionPaseo);
     const paseo = new Paseo (mascotaId,paseadorId,diaPaseo,horaPaseo,direccionPaseo); 
     //agrega el paseo al paseador
     paseador.agendarPaseo(paseo);
@@ -182,6 +182,8 @@ crearPaseo = (mascota,paseador,cliente) => {
            para su  mascota ${mascota.mostrarNombreMascota()} con ${paseador.mostrarNombrePersona()} `);
     return paseo;
 }
+
+
 
 
 
@@ -201,11 +203,13 @@ while (cerrar){
             paseador = agregarPaseador();
             paseadores.push(paseador);
             alert(`Bienvenid@  ${paseador.mostrarNombrePersona()} a nuestra red de Paseadores`);
+            console.log(paseadores);
             break;
         case 'cliente':
             person = agregarCliente();
             alert(`Bienvenid@  ${person.mostrarNombrePersona()} a nuestra comunidad de Paseo para tu mascota`);
             mascota = agregarMascota(person);
+            clientes.push(person)
             paseo = prompt(`si desea Agregar un paseo para su mascota ${mascota.mostrarNombreMascota()} ecriba: si `)
             if (paseo.toUpperCase() === 'SI' ){crearPaseo(mascota,paseadores[0],person)}else{alert('Puede agregar su paseo cuando lo desee');}
             break;
@@ -222,3 +226,16 @@ while (cerrar){
     }
     
 }//while
+
+//Ordenar a los paseadores por edad descendente y devolveros por consola.
+
+paseadores.sort( (a,b) =>{
+        if(a.edad < b.edad) {
+          return 1;
+        }
+        if(a.edad > b.edad) {
+          return -1;
+        }
+        return 0;
+});
+console.log(paseadores);
