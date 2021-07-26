@@ -17,7 +17,7 @@ class Persona{
         return (this.nombre);
     } 
     ObtenerRolPersona(){
-        return (this.rol)
+        if(this.rol) {return 'Paseador'} else{return 'Cliente'}
     }
     obtenerCoordenadas(){
         return (this.coordenadas)
@@ -183,6 +183,25 @@ crearPaseo = (mascota,paseador,cliente) => {
     return paseo;
 }
 
+dibujarPaseadores = (paseadores) =>{
+    paseadores.forEach(el => {
+        let miHtml = document.querySelector("#paseadoresContainer");
+        miHtml.innerHTML +=
+        `
+        <div class="box__section">
+            <article class="text-center">
+            <div class="btn__color">
+                <h2>${el.nombre}</h2>
+                <h3>${el.ObtenerRolPersona()}</h3>
+                <a href="#">Mas Info</a>
+            </div>
+            </article>
+        </div>
+        `
+        
+    });
+}
+
 
 
 
@@ -239,3 +258,4 @@ paseadores.sort( (a,b) =>{
         return 0;
 });
 console.log(paseadores);
+dibujarPaseadores(paseadores);
