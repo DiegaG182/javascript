@@ -28,3 +28,6 @@
       -webkit-box-shadow: rgba(67, 65, 146, 0.45) 0px 5px 15px 0px;
       -moz-box-shadow: rgba(67, 65, 146, 0.45) 0px 5px 15px 0px;
 }    
+#formulario-paseadores{
+  display: none;
+}

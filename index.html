@@ -6,10 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>Clase 8</title>
+    <title>Clase 9</title>
 </head>
 <body>
-    <div class="text-center" ><h1>Clase 8 - DOM</h1></div>
+    <div class="text-center" ><h1>Clase 9 - Eventos + Complementario</h1></div>
+    <div class="container">
+        <button id="agregarPaseador">Agregar Paseador</button>
+        
+        <form id="formulario-paseadores">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Su nombre</label>
+                <input type="text" class="form-control" id="fnombre" placeholder="Bart Simpson">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput2">Su edad</label>
+                <input type="text" class="form-control" id="fedad" placeholder="33">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput3">Su Direccion</label>
+                <input type="text" class="form-control" id="fdireccion" placeholder="Calle falsa 123">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput4">Email address</label>
+                <input type="email" class="form-control" id="fmail" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Seleccione Su Disponibilidad Diaria</label>
+              <select class="form-control" id="fdiasDisponibles">
+                <option value="1">Lunes</option>
+                <option value="2">Martes</option>
+                <option value="3">Miercoles</option>
+                <option value="4">Jueves</option>
+                <option value="5">Viernes</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect2">Seleccione Su Disponibilidad Horaria </label>
+              <select multiple class="form-control" id="fhorariosDisponibles">
+                <option value="1">Mañana</option>
+                <option value="2">MedioDia</option>
+                <option value="3">Tarde</option>
+              </select>
+            </div>
+            <div>
+                <button>submitir</button>
+            </div>
+          </form>
+    </div>
     <div class="container">
         <div class="row" id="paseadoresContainer">
         <!-- Se dibujan los paseadores -->
@@ -17,6 +60,8 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="js/ejercicio.js"></script>
+    <script src="js/class.js"></script>
+    <script src="js/paseadores.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
