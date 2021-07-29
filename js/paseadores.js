@@ -12,27 +12,31 @@
     alert(`se agrego al paseador ${person.mostrarNombrePersona()} `);
     return person;
 } */
+const paseadores = [];
 
 
 mostrarFormularioPaseadores = () =>{
-    let formulario = document.getElementById("formulario-paseadores")
-    formulario.style.display = "block";
+    let formulario = document.getElementById('contenedorForm')
+    formulario.className = "displayBlock"
+}
+ocultarFormularioPaseadores = () =>{
+    let formulario = document.getElementById('contenedorForm')
+    formulario.className = "displayNone"
 }
 agregarPaseador = () =>{
     let nombre = document.getElementById("fnombre").value
-    console.log(nombre);
-/*     let edad = parseInt(prompt("ingrese su edad"));
-    let direccion = prompt("ingrese su direccion");
-    let mail = prompt("ingrese su mail");
-    let rol =  true;
+    let edad = document.getElementById("fedad").value
+    let direccion = document.getElementById("fdireccion").value
+    let mail = document.getElementById("fmail").value
     let dispoDia = prompt("ingrese los dias que puede realizar un paseo");
     let dispoDiaria = (Array.from(dispoDia))
     let dispoHora = prompt("ingrese los horarios que puede realizar un paseo");
     let dispoHoraria = (Array.from(dispoHora))
-    const person = new Paseador (nombre,edad,direccion,mail,rol,dispoDiaria,dispoHoraria); 
- */    
+    const person = new Paseador (nombre,edad,direccion,mail,dispoDiaria,dispoHoraria); 
+    paseadores.push(person);
+    dibujarPaseadores(paseadores);
+    ocultarFormularioPaseadores();
 }
-
 agregarCliente = () => {
     let nombre = prompt("ingrese su nombre");
     let edad = parseInt(prompt("ingrese su edad"));
@@ -71,8 +75,11 @@ crearPaseo = (mascota,paseador,cliente) => {
 }
 
 dibujarPaseadores = (paseadores) =>{
+    let miHtml = document.querySelector("#paseadoresContainer");
+    miHtml.innerHTML = '';
+            
     paseadores.forEach(el => {
-        let miHtml = document.querySelector("#paseadoresContainer");
+        
         miHtml.innerHTML +=
         `
         <div class="box__section">
@@ -88,7 +95,3 @@ dibujarPaseadores = (paseadores) =>{
         
     });
 }
-
-let boton = document.getElementById("agregarPaseador")
-console.log(boton)
-boton.onclick = mostrarFormularioPaseadores();
