@@ -28,10 +28,11 @@ agregarPaseador = () =>{
     let edad = document.getElementById("fedad").value
     let direccion = document.getElementById("fdireccion").value
     let mail = document.getElementById("fmail").value
-    let dispoDia = prompt("ingrese los dias que puede realizar un paseo");
-    let dispoDiaria = (Array.from(dispoDia))
-    let dispoHora = prompt("ingrese los horarios que puede realizar un paseo");
-    let dispoHoraria = (Array.from(dispoHora))
+    let dias = document.querySelectorAll('#fdiasDisponibles option:checked');
+    let dispoDiaria = Array.from(dias).map(el => el.value);
+    let horas = document.querySelectorAll('#fhorariosDisponibles option:checked');
+    let dispoHoraria =Array.from(horas).map(el => el.value);
+
     const person = new Paseador (nombre,edad,direccion,mail,dispoDiaria,dispoHoraria); 
     paseadores.push(person);
     dibujarPaseadores(paseadores);
