@@ -60,6 +60,7 @@ class Cliente extends Persona{
     agregarMascota(mascota){
         this.mascotas.push(mascota)
     }
+    
 }
 
 

@@ -16,21 +16,23 @@ const paseadores = [];
 
 
 mostrarFormularioPaseadores = () =>{
-    let formulario = document.getElementById('contenedorForm')
-    formulario.className = "displayBlock"
+    let formulario = document.getElementById('contenedorFormPaseadores')
+    if(formulario.className == "displayNone"){
+        formulario.className = "displayBlock"
+    }else{ocultarFormularioPaseadores()}
 }
 ocultarFormularioPaseadores = () =>{
-    let formulario = document.getElementById('contenedorForm')
+    let formulario = document.getElementById('contenedorFormPaseadores')
     formulario.className = "displayNone"
 }
 agregarPaseador = () =>{
-    let nombre = document.getElementById("fnombre").value
-    let edad = document.getElementById("fedad").value
-    let direccion = document.getElementById("fdireccion").value
-    let mail = document.getElementById("fmail").value
-    let dias = document.querySelectorAll('#fdiasDisponibles option:checked');
+    let nombre = document.getElementById("pnombre").value
+    let edad = document.getElementById("pedad").value
+    let direccion = document.getElementById("pdireccion").value
+    let mail = document.getElementById("pmail").value
+    let dias = document.querySelectorAll('#pdiasDisponibles option:checked');
     let dispoDiaria = Array.from(dias).map(el => el.value);
-    let horas = document.querySelectorAll('#fhorariosDisponibles option:checked');
+    let horas = document.querySelectorAll('#phorariosDisponibles option:checked');
     let dispoHoraria =Array.from(horas).map(el => el.value);
 
     const person = new Paseador (nombre,edad,direccion,mail,dispoDiaria,dispoHoraria); 
@@ -38,27 +40,6 @@ agregarPaseador = () =>{
     dibujarPaseadores(paseadores);
     ocultarFormularioPaseadores();
 }
-agregarCliente = () => {
-    let nombre = prompt("ingrese su nombre");
-    let edad = parseInt(prompt("ingrese su edad"));
-    let direccion = prompt("ingrese su direccion");
-    let mail = prompt("ingrese su mail");
-    
-    const person = new Cliente (nombre,edad,direccion,mail); 
-    alert(`Bienvenid@  ${person.mostrarNombrePersona()} `);
-    return person;
-}
-
-agregarMascota = (cliente) => {
-    let ownerId = cliente.id;
-    let nombre = prompt("ingrese el nombre de su mascota");
-    let edad = parseInt(prompt("ingrese la edad de su mascota"));
-    let raza = prompt("ingrese la raza de su mascota");
-    const mascota = new Mascota (ownerId,nombre,edad,raza); 
-    alert(`se agrego a su  mascota ${mascota.mostrarNombreMascota()} `);
-    return mascota;
-}
-
 
 crearPaseo = (mascota,paseador,cliente) => {
     let mascotaId = mascota.id;
