@@ -1,17 +1,3 @@
-/* agregarPaseador = () => {
-    let nombre = prompt("ingrese su nombre");
-    let edad = parseInt(prompt("ingrese su edad"));
-    let direccion = prompt("ingrese su direccion");
-    let mail = prompt("ingrese su mail");
-    let rol =  true;
-    let dispoDia = prompt("ingrese los dias que puede realizar un paseo");
-    let dispoDiaria = (Array.from(dispoDia))
-    let dispoHora = prompt("ingrese los horarios que puede realizar un paseo");
-    let dispoHoraria = (Array.from(dispoHora))
-    const person = new Paseador (nombre,edad,direccion,mail,rol,dispoDiaria,dispoHoraria); 
-    alert(`se agrego al paseador ${person.mostrarNombrePersona()} `);
-    return person;
-} */
 const paseadores = [];
 
 
@@ -39,6 +25,8 @@ agregarPaseador = () =>{
     paseadores.push(person);
     dibujarPaseadores(paseadores);
     ocultarFormularioPaseadores();
+    guardarLS("listaPaseadores", JSON.stringify(paseadores));
+
 }
 
 crearPaseo = (mascota,paseador,cliente) => {

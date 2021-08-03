@@ -27,7 +27,7 @@ class Persona{
 
 class Paseador extends Persona{
     paseosAgendados = [];
-    constructor(nombre,edad,direccion,mail,dispoDiaria,dispoHoraria/* , cantidadDePaseos */){
+    constructor(nombre,edad,direccion,mail,dispoDiaria,dispoHoraria){
         
         super(nombre,edad,direccion,mail,true);
         //Disponibilidad Diaria, marca los dias que puede pasear este paseador 
@@ -51,6 +51,8 @@ class Paseador extends Persona{
 
     }
 }
+
+
 
 class Cliente extends Persona{
     mascotas = [];
