@@ -61,12 +61,12 @@ ocultarFormularioMascotas = () =>{
 
 agregarMascota = () => {
     
-    let ownerId = document.getElementById("mid").value
+    let ownerId = parseInt(document.getElementById("mid").value)
     let nombre = document.getElementById("mnombre").value
     let edad = document.getElementById("medad").value
     let raza = document.getElementById("mraza").value
     
     const mascota = new Mascota (ownerId,nombre,edad,raza); 
-    clientes.find(cl => cl.id === ownerId).agregarMascota(mascota)
+    clientes.find(cl => cl.personaId === ownerId).agregarMascota(mascota)
     guardarLS("listaClientes", JSON.stringify(clientes));
 }
