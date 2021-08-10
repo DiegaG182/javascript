@@ -55,7 +55,7 @@ dibujarPaseador = (p) => {
 
     $("#diasPaseos").html("")
     
-    for ( const dia of p.dispoHoraria){
+    for ( const dia of p.dispoDiaria){
         
         
         $("#diasPaseos").append(
@@ -67,7 +67,7 @@ dibujarPaseador = (p) => {
             `
         )
         for ( const turno of p.dispoHoraria){
-        $("#dia + `dia`").append(
+        $(`#dia${dia}`).append(
             `
             <option value="${turno}">${turno}</option> 
             `
