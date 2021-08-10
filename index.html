@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>Clase 9</title>
+    <title>Alta Personas</title>
 </head>
 <body>
     <div class="text-center" ><h1>Clase 9 - Eventos + Complementario</h1></div>
@@ -34,19 +34,19 @@
             <div class="form-group">
               <label for="exampleFormControlSelect1">Seleccione Su Disponibilidad Diaria</label>
               <select multiple class="form-control" id="pdiasDisponibles">
-                <option value="1">Lunes</option>
-                <option value="2">Martes</option>
-                <option value="3">Miercoles</option>
-                <option value="4">Jueves</option>
-                <option value="5">Viernes</option>
+                <option value="Lunes">Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miercoles">Miercoles</option>
+                <option value="Jueves">Jueves</option>
+                <option value="Viernes">Viernes</option>
               </select>
             </div>
             <div class="form-group">
               <label for="exampleFormControlSelect2">Seleccione Su Disponibilidad Horaria </label>
               <select multiple class="form-control" id="phorariosDisponibles">
-                <option value="1">Mañana</option>
-                <option value="2">MedioDia</option>
-                <option value="3">Tarde</option>
+                <option value="Mañana">Mañana</option>
+                <option value="MedioDia">MedioDia</option>
+                <option value="Tarde">Tarde</option>
               </select>
             </div>
             
@@ -91,9 +91,9 @@
       <!-- Se dibujan los clientes -->        
       </div>
       <!-- Agregar Mascota -->
-  <div class="container">
+  <div class="container" id="containerMascotas">
     <div id="contenedorFormMascotas" class="displayNone">    
-      <form id="formulario-mascotas" >
+      <form id="formulario-mascotas"  >
           <div class="form-group">
               <label for="exampleFormControlInput1">nombre de su Mascota</label>
               <input type="text" class="form-control" id="mnombre" placeholder="Bart Simpson">
@@ -113,6 +113,7 @@
   </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/class.js"></script>
     <script src="js/paseadores.js"></script>
     <script src="js/clientes.js"></script>

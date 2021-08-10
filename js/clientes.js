@@ -1,21 +1,20 @@
 const clientes = []
 mostrarFormularioClientes = () =>{
-    let formulario = document.getElementById('contenedorFormClientes')
-    if(formulario.className == "displayNone"){
-        formulario.className = "displayBlock"
-    }else{ocultarFormularioClientes()}
+     
+    if($('#contenedorFormClientes').hasClass("displayBlock")){
+        ocultarFormularioClientes()
+    }else{$('#contenedorFormClientes').addClass("displayBlock")}
     
 }
 ocultarFormularioClientes = () =>{
-    let formulario = document.getElementById('contenedorFormClientes')
-    formulario.className = "displayNone"
+    $('#contenedorFormClientes').removeClass("displayBlock")
 }
 
 agregarCliente = () => {
-    let nombre = document.getElementById("cnombre").value
-    let edad = document.getElementById("cedad").value
-    let direccion = document.getElementById("cdireccion").value
-    let mail = document.getElementById("cmail").value
+    let nombre = $("#cnombre").val()
+    let edad = $("#cedad").val()
+    let direccion = $("#cdireccion").val()
+    let mail = $("#cmail").val()
     
     const person = new Cliente (nombre,edad,direccion,mail); 
     clientes.push(person);
@@ -37,7 +36,7 @@ dibujarClientes = (clientes) =>{
             <div class="btn__color">
                 <h2>${el.nombre}</h2>
                 <h3>${el.ObtenerRolPersona()}</h3>
-                <a href="#" onclick="mostrarFormularioMascotas(${el.personaId});return false;">Agregar Mascota</a>
+                <a href="#containerMascotas" onclick="mostrarFormularioMascotas(${el.personaId});return false;">Agregar Mascota</a>
             </div>
             </article>
         </div>
@@ -46,27 +45,25 @@ dibujarClientes = (clientes) =>{
 }
 
 mostrarFormularioMascotas = (idOwner) =>{
-    let formulario = document.getElementById('contenedorFormMascotas')
-    
-    if(formulario.className == "displayNone"){
-        formulario.className = "displayBlock"
-        document.getElementById('mid').value = idOwner
-    }else{ocultarFormularioMascotas()
-          document.getElementById('mid').value = ""}
+    if($('#contenedorFormMascotas').hasClass("displayBlock")){
+        ocultarFormularioMascotas()
+    }else{$('#contenedorFormMascotas').show()
+          $('#mid').val(idOwner)    
+    }
 }
 ocultarFormularioMascotas = () =>{
-    let formulario = document.getElementById('contenedorFormMascotas')
-    formulario.className = "displayNone"
+    $('#contenedorFormMascotas').hide();
 }
 
 agregarMascota = () => {
     
-    let ownerId = parseInt(document.getElementById("mid").value)
-    let nombre = document.getElementById("mnombre").value
-    let edad = document.getElementById("medad").value
-    let raza = document.getElementById("mraza").value
+    let ownerId = parseInt($("#mid").val())
+    let nombre = $("#mnombre").val()
+    let edad = $("#medad").val()
+    let raza = $("#mraza").val()
     
     const mascota = new Mascota (ownerId,nombre,edad,raza); 
     clientes.find(cl => cl.personaId === ownerId).agregarMascota(mascota)
     guardarLS("listaClientes", JSON.stringify(clientes));
+    ocultarFormularioMascotas();
 }

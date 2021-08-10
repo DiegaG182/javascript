@@ -36,9 +36,6 @@ class Paseador extends Persona{
         this.dispoHoraria = dispoHoraria;
         }
     
-    obtenerDispoDiaria(){
-        return (this.dispoDiaria)
-    }
     obtenerDispoHoraria(){
         return (this.dispoHoraria)
     }
@@ -47,7 +44,31 @@ class Paseador extends Persona{
         console.log(`Se Ha agendado el paseo de xxx`)
         //${paseo.idPaseo.mostrarNombrePersona()}
     }
-    obtenerPaseosAgendados(){
+    
+    obtenerDiasAPasear(){
+        paseosTraducidos = [];
+        this.dispoDiaria.forEach(el => {
+            switch (el.value){
+            case '1':
+                return paseosTraducidos.push('Lunes')
+                break;
+            case '2':
+                return paseosTraducidos.push('Martes')
+                break;
+            case '3':
+                return paseosTraducidos.push('Miercoles')
+                break;
+            case '4':
+                return paseosTraducidos.push('Jueves')
+                break;
+            case '5':
+                return paseosTraducidos.push('Viernes')
+                break;
+            default:
+                break;    
+            }
+            return paseosTraducidos
+        });
 
     }
 }

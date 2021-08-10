@@ -2,20 +2,19 @@ const paseadores = [];
 
 
 mostrarFormularioPaseadores = () =>{
-    let formulario = document.getElementById('contenedorFormPaseadores')
-    if(formulario.className == "displayNone"){
-        formulario.className = "displayBlock"
+
+    if($('#contenedorFormPaseadores').hasClass("displayNone")){
+        $('#contenedorFormPaseadores').show()
     }else{ocultarFormularioPaseadores()}
-}
+};    
 ocultarFormularioPaseadores = () =>{
-    let formulario = document.getElementById('contenedorFormPaseadores')
-    formulario.className = "displayNone"
+    $('#contenedorFormPaseadores').hide()
 }
 agregarPaseador = () =>{
-    let nombre = document.getElementById("pnombre").value
-    let edad = document.getElementById("pedad").value
-    let direccion = document.getElementById("pdireccion").value
-    let mail = document.getElementById("pmail").value
+    let nombre = $("#pnombre").val()
+    let edad = $("#pedad").val()
+    let direccion = $("#pdireccion").val()
+    let mail = $("#pmail").val()
     let dias = document.querySelectorAll('#pdiasDisponibles option:checked');
     let dispoDiaria = Array.from(dias).map(el => el.value);
     let horas = document.querySelectorAll('#phorariosDisponibles option:checked');
@@ -65,3 +64,6 @@ dibujarPaseadores = (paseadores) =>{
         
     });
 }
+
+
+
