@@ -4,11 +4,17 @@ const paseadores = [];
 mostrarFormularioPaseadores = () =>{
 
     if($('#contenedorFormPaseadores').hasClass("displayNone")){
-        $('#contenedorFormPaseadores').show()
+        $('#contenedorFormPaseadores').fadeIn(2000, function(){
+            $("#titulo").html("<h1>Formulario Agregar Paseador</h1> ")
+            $('#contenedorFormPaseadores').removeClass("displayNone")    
+        })
     }else{ocultarFormularioPaseadores()}
 };    
 ocultarFormularioPaseadores = () =>{
-    $('#contenedorFormPaseadores').hide()
+    $('#contenedorFormPaseadores').fadeOut("slow", function(){
+        $("#titulo").html("<h1>Formulario Personas</h1> ")
+        $('#contenedorFormPaseadores').addClass("displayNone")
+    })
 }
 agregarPaseador = () =>{
     let nombre = $("#pnombre").val()
