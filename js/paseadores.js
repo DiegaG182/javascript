@@ -62,7 +62,7 @@ dibujarPaseadores = (paseadores) =>{
             <div class="btn__color">
                 <h2>${el.nombre}</h2>
                 <h3>${el.ObtenerRolPersona()}</h3>
-                <a href="#">Mas Info</a>
+                <a href="#">Eliminar</a>
             </div>
             </article>
         </div>
