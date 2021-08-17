@@ -34,31 +34,38 @@ dibujarPaseador = (p) => {
             <div class="btn__color">
                 <h2>${p.nombre}</h2>
                 <form id="formulario-paseo" >
-                    <div class="form-group" id="diasPaseos">
-                    /* aca se dibujaran los horarios por dias */    
+                    <div class="form-group" id="diasPaseos">   
 
-                        <button type="submit" class="btn btn-primary" id="seleccionarPaseo">Confirmar Paseos</button>
                     </div>
                 </form>
-                
+                <button type="button" class="btn btn-primary" id="confirmarPaseos">Confirmar Paseos</button>
+                    
             </div>
             </article>
         </div>
         `
-    )
-    $("#seleccionarPaseo").on('submit', function (e) {
+    );
+    $("#confirmarPaseos").on("click", function (e) {
+       
         e.preventDefault()
+        
+        $("#diasPaseos").find("select").each( function(){
+            if($(this).children("option:selected").val() != ''){
+            //horariosSeleccionado.push($(this).children("option:selected").val())
+            }
+        })
+        /* console.log($("#diasPaseos").parent().children()) */
         //let dias = $("#pDiasDisponibles option:selected").val()
         //console.log(paseadores.find(cl => cl.personaId === paseadorId))
         
     });
 
-    $("#diasPaseos").html("")
-    
+/*     $("#diasPaseos").html("") */
+
     for ( const dia of p.dispoDiaria){
         
         
-        $("#diasPaseos").append(
+        $("#diasPaseos").prepend(
             `
             <label for="f${dia}">Dia ${dia}</label>
                 <select class="form-control" id="dia${dia}"> 
@@ -66,8 +73,13 @@ dibujarPaseador = (p) => {
 
             `
         )
+        //inicializar dia vacio
+        $(`#dia${dia}`).prepend(
+            `<option value="">Seleccione horario</option>`
+        )
+        //imprime los horarios de paseo
         for ( const turno of p.dispoHoraria){
-        $(`#dia${dia}`).append(
+        $(`#dia${dia}`).prepend(
             `
             <option value="${turno}">${turno}</option> 
             `
