@@ -17,7 +17,7 @@ class Persona{
         return (this.nombre);
     } 
     ObtenerRolPersona(){
-        if(this.rol) {return 'Paseador'} else{return 'Cliente'}
+        this.rol ? 'Paseador' : 'Cliente'
     }
     obtenerCoordenadas(){
         return (this.coordenadas)
