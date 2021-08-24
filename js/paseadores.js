@@ -31,8 +31,13 @@ agregarPaseador = () =>{
     paseadores.push(person);
     dibujarPaseadores(paseadores);
     ocultarFormularioPaseadores();
-    guardarJson(JSON.stringify(paseadores),JsonPASEADORES);
-
+    guardarLS("listaPaseadores", JSON.stringify(paseadores))
+}
+ 
+eliminarPaseador = (id) => {
+    paseadores = paseadores.filter( persona => persona.personaId != id)
+    dibujarPaseadores(paseadores);
+    guardarLS("listaPaseadores", JSON.stringify(paseadores))
 }
 
 crearPaseo = (mascota,paseador,cliente) => {
@@ -59,13 +64,13 @@ dibujarPaseadores = (paseadores) =>{
             <div class="btn__color">
                 <h2>${el.nombre}</h2>
                 <h3>${el.ObtenerRolPersona()}</h3>
-                <a href="#">Eliminar</a>
+                <a href="#" onclick="eliminarPaseador(${el.personaId});" >Eliminar</a>
             </div>
             </article>
         </div>
         `
-        
     });
+
 }
 
 

@@ -17,7 +17,8 @@ class Persona{
         return (this.nombre);
     } 
     ObtenerRolPersona(){
-        this.rol ? 'Paseador' : 'Cliente'
+    //    this.rol ? "Paseador" : "Cliente"
+        if(this.rol) {return "Paseador"}else{return "Cliente"}
     }
     obtenerCoordenadas(){
         return (this.coordenadas)
@@ -38,9 +39,6 @@ class Paseador extends Persona{
     
     obtenerDispoHoraria(){
         return (this.dispoHoraria)
-    }
-    agendarPaseo(paseo){
-        this.paseosAgendados.push(paseo);
     }
     
 }

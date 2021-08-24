@@ -1,1 +1,1 @@
-[{"personaId":1,"nombre":"Jesica","edad":"25","coordenadas":"asd 123","mail":"asd@asd.com","rol":false,"mascotas":[{"mascotaId":5,"ownerId":1,"nombre":"oreo","edad":"2","raza":"pointer"}]},{"personaId":12,"nombre":"bart","edad":"2","coordenadas":"asd","mail":"asd","rol":false,"mascotas":[{"mascotaId":1,"ownerId":12,"nombre":"zulema","edad":"4","raza":"fina"}]}]
+[{"personaId":1,"nombre":"Jesica","edad":"25","coordenadas":"asd 123","mail":"asd@asd.com","rol":false},{"personaId":12,"nombre":"bart","edad":"2","coordenadas":"asd","mail":"asd","rol":false}]
