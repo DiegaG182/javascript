@@ -26,17 +26,14 @@ class Persona{
 }
 
 class Paseador extends Persona{
-    paseosAgendados = [];
-    constructor(nombre,edad,direccion,mail,dispoDiaria,dispoHoraria,paseos){
+    
+    constructor(nombre,edad,direccion,mail,dispoDiaria,dispoHoraria){
         
         super(nombre,edad,direccion,mail,true);
         //Disponibilidad Diaria, marca los dias que puede pasear este paseador 
         this.dispoDiaria = dispoDiaria;
         //Disponibilidad Horaria, marca los turnos que puede pasear este paseador 
         this.dispoHoraria = dispoHoraria;
-        for (const p of paseos) {
-            p && this.agendarPaseo(new Paseo(p.mascotaId,p.paseadorId,p.diaPaseo,p.horaPaseo,p.direccionPaseo))
-        }
     }
     
     obtenerDispoHoraria(){
@@ -51,17 +48,10 @@ class Paseador extends Persona{
 
 
 class Cliente extends Persona{
-    mascotas = [];
-    constructor(nombre,edad,direccion,mail,mascotas){
-        super(nombre,edad,direccion,mail,false); 
-        for (const m of mascotas) {
-            m && this.agregarMascota(new Mascota(m.ownerId,m.nombre,m.edad,m.raza))
-        }
-    }    
-    agregarMascota(mascota){
-        this.mascotas.push(mascota)
-    }
     
+    constructor(nombre,edad,direccion,mail,){
+        super(nombre,edad,direccion,mail,false); 
+    }    
 }
 
 

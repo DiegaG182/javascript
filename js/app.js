@@ -2,28 +2,29 @@
 //const clientes = []
 const JsonCLIENTES = "https://diegag182.github.io/javascript/clientes.json"
 const JsonPASEADORES = "https://diegag182.github.io/javascript/paseadores.json"
+const JsonMASCOTAS = "https://diegag182.github.io/javascript/mascotas.json"
+const JsonPASEOS = "https://diegag182.github.io/javascript/paseos.json"
 
 //Recuperamos los valores de LS
 //Paseadores
 $( document ).ready(function() {
   $.get(JsonPASEADORES, function (respuesta, estado) {
     if(estado === "success"){
-      let paseadoresR = [];
       let paseadoresJson = respuesta;
+      
       for (const paseador of paseadoresJson) {
-          paseadoresR.push(new Paseador(paseador.nombre,paseador.edad,paseador.direccion,paseador.mail,paseador.dispoDiaria,paseador.dispoHoraria,paseador.paseos))
+          paseadores.push(new Paseador(paseador.nombre,paseador.edad,paseador.direccion,paseador.mail,paseador.dispoDiaria,paseador.dispoHoraria,paseador.paseos))
       }  
-      paseadores = paseadoresR;
     }
   });
+
   $.get(JsonCLIENTES, function (respuesta, estado) {
     if(estado === "success"){
       let clientesR = [];
       let clientesJson = respuesta;
-      for (const paseador of clientesJson) {
-          clientesR.push(new Paseador(paseador.nombre,paseador.edad,paseador.direccion,paseador.mail,paseador.dispoDiaria,paseador.dispoHoraria,paseador.mascotas))
+      for (const cliente of clientesJson) {
+          clientes.push(new Cliente(cliente.nombre,cliente.edad,cliente.direccion,cliente.mail,cliente.dispoDiaria,cliente.dispoHoraria,cliente.mascotas))
       }  
-      clientes = clientesR;
     }
   });
 
@@ -50,10 +51,8 @@ guardarLS = (clave,personas) =>{
 }
 
 guardarJson = (infoPost,url) => {
-  url == "cliente" ? URLSET =  JsonCLIENTES : URLSET =  JsonPASEADORES
-
-  $.post(URLSET, infoPost ,(respuesta, estado) => {
-    estado ? console.log("datos guardados" + respuesta.nombre) : console.log("Error al guardar datos")
+  $.post(url, infoPost ,(respuesta, estado) => {
+    estado === "success"? console.log("datos guardados" + respuesta.nombre) : console.log("Error al guardar datos")
   });
 }
 

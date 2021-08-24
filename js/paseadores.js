@@ -1,4 +1,5 @@
-const paseadores = [];
+let paseadores = [];
+let paseos = [];
 
 
 mostrarFormularioPaseadores = () =>{
@@ -30,7 +31,7 @@ agregarPaseador = () =>{
     paseadores.push(person);
     dibujarPaseadores(paseadores);
     ocultarFormularioPaseadores();
-    guardarLS("listaPaseadores", JSON.stringify(paseadores));
+    guardarJson(JSON.stringify(paseadores),JsonPASEADORES);
 
 }
 
@@ -40,13 +41,9 @@ crearPaseo = (mascota,paseador,cliente) => {
     let diaPaseo = Array.from(prompt("ingrese el dia que desea pasear a su mascota"));
     let horaPaseo = Array.from(prompt("ingrese el horario que desea pasear a su mascota"));
     let direccionPaseo = cliente.obtenerCoordenadas();
-    //console.log(direccionPaseo);
+
     const paseo = new Paseo (mascotaId,paseadorId,diaPaseo,horaPaseo,direccionPaseo); 
-    //agrega el paseo al paseador
-    paseador.agendarPaseo(paseo);
-    alert(`se agrego el paseo el dia ${paseo.obtenerDia()} en el turno ${paseo.obtenerTurno()} 
-           para su  mascota ${mascota.mostrarNombreMascota()} con ${paseador.mostrarNombrePersona()} `);
-    return paseo;
+    paseos.push(paseo);
 }
 
 dibujarPaseadores = (paseadores) =>{

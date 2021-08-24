@@ -1,4 +1,5 @@
-const clientes = []
+let clientes = []
+let mascotas = [];
 mostrarFormularioClientes = () =>{
      
     if($('#contenedorFormClientes').hasClass("displayBlock")){
@@ -20,7 +21,7 @@ agregarCliente = () => {
     clientes.push(person);
     dibujarClientes(clientes);
     ocultarFormularioClientes();
-    guardarJson(person);
+    guardarJson(person, JsonCLIENTES);
 }
 
 dibujarClientes = (clientes) =>{
@@ -63,7 +64,7 @@ agregarMascota = () => {
     let raza = $("#mraza").val()
     
     const mascota = new Mascota (ownerId,nombre,edad,raza); 
-    clientes.find(cl => cl.personaId === ownerId).agregarMascota(mascota)
-    guardarJson(JSON.stringify(clientes));
+    // clientes.find(cl => cl.personaId === ownerId).agregarMascota(mascota) 
+    //guardarJson(JSON.stringify(clientes),JsonMASCOTAS);
     ocultarFormularioMascotas();
 }
