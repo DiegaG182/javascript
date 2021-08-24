@@ -20,7 +20,7 @@ agregarCliente = () => {
     clientes.push(person);
     dibujarClientes(clientes);
     ocultarFormularioClientes();
-    guardarLS("listaClientes", JSON.stringify(clientes));
+    guardarJson(person);
 }
 
 dibujarClientes = (clientes) =>{
@@ -64,6 +64,6 @@ agregarMascota = () => {
     
     const mascota = new Mascota (ownerId,nombre,edad,raza); 
     clientes.find(cl => cl.personaId === ownerId).agregarMascota(mascota)
-    guardarLS("listaClientes", JSON.stringify(clientes));
+    guardarJson(JSON.stringify(clientes));
     ocultarFormularioMascotas();
 }
