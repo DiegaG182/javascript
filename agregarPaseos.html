@@ -10,14 +10,33 @@
 </head>
 <body>
     <div class="text-center" ><h1>Formulario Personas</h1></div>
+
+    <!-- Elegir cliente/mascota a pasear -->
+    <div class="container">
+      <div class="row" id="mascotasElegiblesContainer">
+      <!-- Se dibujan las mascotas -->        
+      <form id="formulario-mascotas" >
+          <div class="form-group">
+            <label for="mascota-seleccion">Seleccione la mascota a pasear</label>
+            <select  class="form-control" id="mascota-seleccion">
+              <!-- Se dibujan <option value="IdMascota">nutella</option> -->
+            </select>
+            <button type="submit" class="btn btn-primary" id="seleccionarMascota">Seleccionar Mascota</button>
+          </div>
+          
+          
+        </form>
+      </div>   
+  </div>
+
     <!-- Elegir paseador -->
     <div class="container">
-        <div class="row" id="paseadoresContainer">
+        <div class="row" id="paseadoresElegiblesContainer">
         <!-- Se dibujan los paseadores -->        
         <form id="formulario-paseadores" >
             <div class="form-group">
               <label for="exampleFormControlSelect1">Seleccione al paseador de su mascota</label>
-              <select multiple class="form-control" id="paseadores">
+              <select  class="form-control" id="paseadores">
                 <!-- Se dibujan <option value="IdPaseador">Naza</option> -->
               </select>
               <button type="submit" class="btn btn-primary" id="seleccionarPaseador">Seleccionar</button>

@@ -27,59 +27,37 @@ class Persona{
 
 class Paseador extends Persona{
     paseosAgendados = [];
-    constructor(nombre,edad,direccion,mail,dispoDiaria,dispoHoraria){
+    constructor(nombre,edad,direccion,mail,dispoDiaria,dispoHoraria,paseos){
         
         super(nombre,edad,direccion,mail,true);
         //Disponibilidad Diaria, marca los dias que puede pasear este paseador 
         this.dispoDiaria = dispoDiaria;
         //Disponibilidad Horaria, marca los turnos que puede pasear este paseador 
         this.dispoHoraria = dispoHoraria;
+        for (const p of paseos) {
+            p && this.agendarPaseo(new Paseo(p.mascotaId,p.paseadorId,p.diaPaseo,p.horaPaseo,p.direccionPaseo))
         }
+    }
     
     obtenerDispoHoraria(){
         return (this.dispoHoraria)
     }
     agendarPaseo(paseo){
         this.paseosAgendados.push(paseo);
-        console.log(`Se Ha agendado el paseo de xxx`)
-        //${paseo.idPaseo.mostrarNombrePersona()}
     }
     
-    obtenerDiasAPasear(){
-        paseosTraducidos = [];
-        this.dispoDiaria.forEach(el => {
-            switch (el.value){
-            case '1':
-                return paseosTraducidos.push('Lunes')
-                break;
-            case '2':
-                return paseosTraducidos.push('Martes')
-                break;
-            case '3':
-                return paseosTraducidos.push('Miercoles')
-                break;
-            case '4':
-                return paseosTraducidos.push('Jueves')
-                break;
-            case '5':
-                return paseosTraducidos.push('Viernes')
-                break;
-            default:
-                break;    
-            }
-            return paseosTraducidos
-        });
-
-    }
 }
 
 
 
 class Cliente extends Persona{
     mascotas = [];
-    constructor(nombre,edad,direccion,mail){
-        super(nombre,edad,direccion,mail,false);    
-    }
+    constructor(nombre,edad,direccion,mail,mascotas){
+        super(nombre,edad,direccion,mail,false); 
+        for (const m of mascotas) {
+            m && this.agregarMascota(new Mascota(m.ownerId,m.nombre,m.edad,m.raza))
+        }
+    }    
     agregarMascota(mascota){
         this.mascotas.push(mascota)
     }
@@ -109,34 +87,7 @@ class Paseo{
         this.horaPaseo = horaPaseo;
         this.direccionPaseo = direccionPaseo;
     } 
-    obtenerDia(){
-        console.log(this.diaPaseo);
-        switch (this.diaPaseo[0]){
-            case '1':
-                return 'Lunes'
-                break;
-            case '2':
-                return 'Martes'
-                break;
-            case '3':
-                return 'Miercoles'
-                break;
-            case '4':
-                return 'Jueves'
-                break;
-            case '5':
-                return 'Viernes'
-                break;
-            case '6':
-                return 'Sabado'
-                break;
-            case '7':
-                return 'Domingo'
-                break;
-            default:
-                break;    
-        }
-    }    
+    /*     
     obtenerTurno(){
         console.log(this.horaPaseo[0]);
         console.log("es un array de obtener turno");
@@ -153,5 +104,5 @@ class Paseo{
             default:
                 break;    
         }
-    }
+    } */
 }

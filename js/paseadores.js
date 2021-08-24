@@ -51,7 +51,7 @@ crearPaseo = (mascota,paseador,cliente) => {
 
 dibujarPaseadores = (paseadores) =>{
     let miHtml = document.querySelector("#paseadoresContainer");
-    miHtml.innerHTML = '';
+    miHtml.innerHTML = ` `;
             
     paseadores.forEach(el => {
         

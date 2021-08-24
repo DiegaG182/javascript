@@ -14,7 +14,8 @@ $( document ).ready(function() {
   const clientesAlmacenados = JSON.parse(localStorage.getItem("listaClientes"));
   if(clientesAlmacenados){
     for (const cliente of clientesAlmacenados)
-    clientes.push(new Cliente(cliente.nombre,cliente.edad,cliente.direccion,cliente.mail));
+    clientes.push(new Cliente(cliente.nombre,cliente.edad,cliente.direccion,cliente.mail,cliente.mascotas));
+    
   }
 });
 
@@ -28,13 +29,25 @@ guardarLS = (clave,personas) =>{
 
 
 
-const URLGET = "https://diegag182.github.io/javascript/data.json"
-$.get(URLGET, function (respuesta, estado) {
+const GETPASEADORES = "https://diegag182.github.io/javascript/paseadores.json"
+$.get(GETPASEADORES, function (respuesta, estado) {
   if(estado === "success"){
     let paseadoresR = [];
     let paseadoresJson = respuesta;
     for (const paseador of paseadoresJson) {
-        paseadoresR.push(new Paseador(paseador.nombre,paseador.edad,paseador.direccion,paseador.mail,paseador.dispoDiaria,paseador.dispoHoraria))
+        paseadoresR.push(new Paseador(paseador.nombre,paseador.edad,paseador.direccion,paseador.mail,paseador.dispoDiaria,paseador.dispoHoraria,paseador.paseos))
+    }  
+    dibujarPaseadores(paseadoresR);
+  }
+
+});
+const GETCLIENTES = "https://diegag182.github.io/javascript/clientes.json"
+$.get(GETCLIENTES, function (respuesta, estado) {
+  if(estado === "success"){
+    let clientesR = [];
+    let clientesJson = respuesta;
+    for (const paseador of clientesJson) {
+        clientesR.push(new Paseador(paseador.nombre,paseador.edad,paseador.direccion,paseador.mail,paseador.dispoDiaria,paseador.dispoHoraria,paseador.paseos))
     }  
     dibujarPaseadores(paseadoresR);
   }
