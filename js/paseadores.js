@@ -40,15 +40,14 @@ eliminarPaseador = (id) => {
     guardarLS("listaPaseadores", JSON.stringify(paseadores))
 }
 
-crearPaseo = (mascota,paseador,cliente) => {
-    let mascotaId = mascota.id;
-    let paseadorId = paseador.id;
-    let diaPaseo = Array.from(prompt("ingrese el dia que desea pasear a su mascota"));
-    let horaPaseo = Array.from(prompt("ingrese el horario que desea pasear a su mascota"));
-    let direccionPaseo = cliente.obtenerCoordenadas();
+crearPaseo = (mascotaId,paseadorId,clienteId,diasPaseos,horasPaseo) => {
+             
+    let direccionPaseo = clientes.find(cl => cl.personaId === clienteId).obtenerCoordenadas();
 
-    const paseo = new Paseo (mascotaId,paseadorId,diaPaseo,horaPaseo,direccionPaseo); 
+    const paseo = new Paseo(mascotaId,paseadorId,diasPaseos,horasPaseo,direccionPaseo); 
     paseos.push(paseo);
+    guardarLS("listaPaseos", JSON.stringify(paseos))
+    console.log(paseos)
 }
 
 dibujarPaseadores = (paseadores) =>{

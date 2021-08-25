@@ -1,15 +1,15 @@
-$( document ).ready(function() {
+$(document).ready(function() {
     dibujarMascotasDisponibles();
-    dibujarPaseadoresDisponibles();    
+      
 });
 
 
 dibujarMascotasDisponibles = () =>{
-       
+       //Buscar aca el problema
     mascotas.forEach(m => {
         owner = clientes.find(cl => cl.personaId === m.ownerId)
         $("#mascota-seleccion").append(
-        `<option value="${owner.nombre}-${m.mascotaId}">${owner.nombre} - ${m.nombre} </option>`
+        `<option value="${owner.personaId}-${m.mascotaId}">${owner.nombre} - ${m.nombre} </option>`
         )
     });    
 
@@ -17,9 +17,9 @@ dibujarMascotasDisponibles = () =>{
 
     $("#seleccionarMascota").on('click', function (e) {
         e.preventDefault()
-        let ids = ($("#mascota-seleccion option:selected").val()).split("-");
-        let ownerId = ids[0];
-        let mascotaId = ids[1];
+        $("#paseadoresElegiblesContainer").show();
+        dibujarPaseadoresDisponibles(); 
+    
     });
     
 }
@@ -29,7 +29,6 @@ dibujarPaseadoresDisponibles = () =>{
     let miHtml = document.querySelector("#paseadores");
     miHtml.innerHTML = '';
             
-    //paseadores.find(cl => cl.personaId === paseadorId).devolverDiasDisponibles
     paseadores.forEach(p => {    
         miHtml.innerHTML +=
         `
@@ -70,16 +69,27 @@ dibujarPaseador = (p) => {
     $("#confirmarPaseos").on("click", function (e) {
        
         e.preventDefault()
-        
+
+        let ids = ($("#mascota-seleccion option:selected").val()).split("-");
+        let ownerId = ids[0];
+        let mascotaId = ids[1];
+        let paseadorId = $("#pid").val();
+        let dias = [];
+        let horas = []
+        //Recorre los dias para obtener si se selecciono alguno con horario valido.    
         $("#diasPaseos").find("select").each( function(){
+
             if($(this).children("option:selected").val() != ''){
-                console.log($(this).attr("id")) 
-                console.log($(this).children("option:selected").val())
-                // (mascota,paseador,cliente)
-            //horariosSeleccionado.push($(this).children("option:selected").val())
-            }
-        })
-        
+                let diaPaseo = $(this).attr("id"); 
+                let horaPaseo = $(this).children("option:selected").val()
+                
+                dias.push(diaPaseo)
+                horas.push(horaPaseo)
+            }    
+        });
+
+        crearPaseo(mascotaId,paseadorId,ownerId,dias,horas)
+
     });
 
 
