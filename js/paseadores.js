@@ -64,7 +64,7 @@ dibujarPaseadores = (paseadores) =>{
             <div class="btn__color">
                 <h2>${el.nombre}</h2>
                 <h3>${el.ObtenerRolPersona()}</h3>
-                <a href="#" onclick="eliminarPaseador(${el.personaId});" >Eliminar</a>
+                <a href="#" onclick="eliminar${el.ObtenerRolPersona()}(${el.personaId});" >Eliminar</a>
             </div>
             </article>
         </div>

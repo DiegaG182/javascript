@@ -7,28 +7,30 @@ const JsonPASEOS = "https://diegag182.github.io/javascript/paseos.json"
 
 //Recuperamos los valores de LS
 //Paseadores
-$( document ).ready(function() {
+
 
 //Paseadores
   const paseadoresAlmacenados = JSON.parse(localStorage.getItem("listaPaseadores"));
   if(paseadoresAlmacenados){
     for (const paseador of paseadoresAlmacenados)
         paseadores.push(new Paseador(paseador.nombre,paseador.edad,paseador.direccion,paseador.mail,paseador.dispoDiaria,paseador.dispoHoraria));
-    dibujarPaseadores(paseadores)
+    //dibujarPaseadores(paseadores)
   }
 //clientes
   const clientesAlmacenados = JSON.parse(localStorage.getItem("listaClientes"));
   if(clientesAlmacenados){
     for (const cliente of clientesAlmacenados)
       clientes.push(new Cliente(cliente.nombre,cliente.edad,cliente.direccion,cliente.mail,cliente.mascotas));
-    dibujarClientes(clientes)
+    //dibujarClientes(clientes)
   }
 
 //mascotas
   const mascotasAlmacenados = JSON.parse(localStorage.getItem("listaMascotas"));
   if(mascotasAlmacenados){
-    for (const mascota of mascotasAlmacenados)
-      mascotas.push(new Mascota(mascota.nombre,mascota.edad,mascota.direccion,mascota.mail,mascota.mascotas));
+    for (const mascota of mascotasAlmacenados){
+      ixOfCl = clientesAlmacenados.findIndex(cl => cl.personaId === mascota.ownerId)
+      mascotas.push(new Mascota(clientes[ixOfCl].personaId,mascota.nombre,mascota.edad,mascota.raza));
+    }                      
   }
 //Si no existen en LS, lo obtiene de un JSon estatico para inicializar datos
 
@@ -42,7 +44,7 @@ $( document ).ready(function() {
       }  
     paseadores = paseadoresR  
     guardarLS("listaPaseadores", JSON.stringify(paseadores))
-    dibujarPaseadores(paseadoresR)
+    //dibujarPaseadores(paseadoresR)
     }
   });
   }
@@ -56,24 +58,27 @@ $( document ).ready(function() {
       }  
     clientes = clientesR;  
     guardarLS("listaClientes", JSON.stringify(clientes))
+    //Busco  las mascotas para asociarlas con los clientes recuperados
+    if(mascotas){
+      $.get(JsonMASCOTAS, function (respuesta, estado) {
+        if(estado === "success"){
+          let mascotasR = [];
+          let mascotasJson = respuesta;
+    
+          for (const mascota of mascotasJson) {
+            ixOfCl = clientesJson.findIndex(cl => cl.personaId === mascota.ownerId)  
+            mascotasR.push(new Mascota (clientes[ixOfCl].personaId,mascota.nombre,mascota.edad,mascota.raza))
+          }  
+          mascotas = mascotasR;  
+          guardarLS("listaMascotas", JSON.stringify(mascotas))
+        }
+      });    
     }
-  });
-  };
-  if(mascotas){
-  $.get(JsonMASCOTAS, function (respuesta, estado) {
-    if(estado === "success"){
-      let mascotasR = [];
-      let mascotasJson = respuesta;
-      for (const mascota of mascotasJson) {
-          mascotasR.push(new Mascota (mascota.ownerId,mascota.nombre,mascota.edad,mascota.raza))
-      }  
     }
+  //fin get clientes  
   });
-  mascotas = mascotasR;  
-  guardarLS("listaMascotas", JSON.stringify(mascotas))
   };
 
-});
 
 
 //Seteo Variables LS

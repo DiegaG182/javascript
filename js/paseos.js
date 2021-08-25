@@ -1,23 +1,18 @@
 $( document ).ready(function() {
     dibujarMascotasDisponibles();
-        
+    dibujarPaseadoresDisponibles();    
 });
 
 
 dibujarMascotasDisponibles = () =>{
-    
-            
-        clientes.forEach(c => {
-            if(c.mascotas.length > 0){
-                c.mascotas.forEach(m => {
-                    $("#mascota-seleccion").append(
-                    `
-                    <option value="${c.personaId}-${m.mascotaId}">${m.nombre} - ${c.nombre} </option>
-                    `
-                    )
-                });
-            }    
-        });
+       
+    mascotas.forEach(m => {
+        owner = clientes.find(cl => cl.personaId === m.ownerId)
+        $("#mascota-seleccion").append(
+        `<option value="${owner.nombre}-${m.mascotaId}">${owner.nombre} - ${m.nombre} </option>`
+        )
+    });    
+
     
 
     $("#seleccionarMascota").on('click', function (e) {
@@ -26,7 +21,7 @@ dibujarMascotasDisponibles = () =>{
         let ownerId = ids[0];
         let mascotaId = ids[1];
     });
-    dibujarPaseadoresDisponibles();
+    
 }
 
 

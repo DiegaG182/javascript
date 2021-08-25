@@ -24,6 +24,12 @@ agregarCliente = () => {
     guardarLS("listaClientes", JSON.stringify(clientes))
 }
 
+eliminarCliente = (id) => {
+    clientes = clientes.filter( persona => persona.personaId != id)
+    dibujarClientes(clientes);
+    guardarLS("listaClientes", JSON.stringify(clientes))
+}
+
 dibujarClientes = (clientes) =>{
     let miHtml = document.querySelector("#clientesContainer");
     miHtml.innerHTML = '';
@@ -38,6 +44,7 @@ dibujarClientes = (clientes) =>{
                 <h2>${el.nombre}</h2>
                 <h3>${el.ObtenerRolPersona()}</h3>
                 <a href="#containerMascotas" onclick="mostrarFormularioMascotas(${el.personaId});return false;">Agregar Mascota</a>
+                <a href="#containerMascotas" onclick="eliminar${el.ObtenerRolPersona()}(${el.personaId});return false;" >Eliminar</a>
             </div>
             </article>
         </div>
@@ -63,7 +70,7 @@ agregarMascota = () => {
     let edad = $("#medad").val()
     let raza = $("#mraza").val()
     
-    const mascota = new Mascota (ownerId,nombre,edad,raza); 
+    const mascota = new Mascota(ownerId,nombre,edad,raza); 
     // clientes.find(cl => cl.personaId === ownerId).agregarMascota(mascota) 
     mascotas.push(mascota)
     guardarLS("listaMascotas", JSON.stringify(mascotas))
