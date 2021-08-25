@@ -26,6 +26,7 @@ dibujarMascotasDisponibles = () =>{
 
 
 dibujarPaseadoresDisponibles = () =>{
+ 
     let miHtml = document.querySelector("#paseadores");
     miHtml.innerHTML = '';
             

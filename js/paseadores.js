@@ -42,7 +42,7 @@ eliminarPaseador = (id) => {
 
 crearPaseo = (mascotaId,paseadorId,clienteId,diasPaseos,horasPaseo) => {
              
-    let direccionPaseo = clientes.find(cl => cl.personaId === clienteId).obtenerCoordenadas();
+    let direccionPaseo = clientes.find(cl => cl.personaId === parseInt(clienteId)).obtenerCoordenadas();
 
     const paseo = new Paseo(mascotaId,paseadorId,diasPaseos,horasPaseo,direccionPaseo); 
     paseos.push(paseo);

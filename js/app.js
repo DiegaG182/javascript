@@ -8,7 +8,8 @@ const JsonPASEOS = "https://diegag182.github.io/javascript/paseos.json"
 //Recuperamos los valores de LS
 //Paseadores
 
-
+$(document).ready(function() {
+  
 //Paseadores
   const paseadoresAlmacenados = JSON.parse(localStorage.getItem("listaPaseadores"));
   if(paseadoresAlmacenados){
@@ -34,7 +35,7 @@ const JsonPASEOS = "https://diegag182.github.io/javascript/paseos.json"
   }
 //Si no existen en LS, lo obtiene de un JSon estatico para inicializar datos
 
-  if(paseadores){
+  if(!paseadores){
   $.get(JsonPASEADORES, function (respuesta, estado) {
     if(estado === "success"){
       let paseadoresJson = respuesta;
@@ -48,7 +49,7 @@ const JsonPASEOS = "https://diegag182.github.io/javascript/paseos.json"
     }
   });
   }
-  if(clientes){
+  if(!clientes){
   $.get(JsonCLIENTES, function (respuesta, estado) {
     if(estado === "success"){
       let clientesR = [];
@@ -59,7 +60,7 @@ const JsonPASEOS = "https://diegag182.github.io/javascript/paseos.json"
     clientes = clientesR;  
     guardarLS("listaClientes", JSON.stringify(clientes))
     //Busco  las mascotas para asociarlas con los clientes recuperados
-    if(mascotas){
+    if(!mascotas){
       $.get(JsonMASCOTAS, function (respuesta, estado) {
         if(estado === "success"){
           let mascotasR = [];
@@ -78,8 +79,8 @@ const JsonPASEOS = "https://diegag182.github.io/javascript/paseos.json"
   //fin get clientes  
   });
   };
-
-
+//fin ready
+});
 
 //Seteo Variables LS
 guardarLS = (clave,personas) =>{
