@@ -70,8 +70,7 @@ agregarMascota = () => {
     let edad = $("#medad").val()
     let raza = $("#mraza").val()
     
-    const mascota = new Mascota(ownerId,nombre,edad,raza); 
-    // clientes.find(cl => cl.personaId === ownerId).agregarMascota(mascota) 
+    const mascota = new Mascota(ownerId,nombre,edad,raza);  
     mascotas.push(mascota)
     guardarLS("listaMascotas", JSON.stringify(mascotas))
     ocultarFormularioMascotas();

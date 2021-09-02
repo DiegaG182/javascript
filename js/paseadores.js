@@ -47,7 +47,6 @@ crearPaseo = (mascotaId,paseadorId,clienteId,diasPaseos,horasPaseo) => {
     const paseo = new Paseo(mascotaId,paseadorId,diasPaseos,horasPaseo,direccionPaseo); 
     paseos.push(paseo);
     guardarLS("listaPaseos", JSON.stringify(paseos))
-    console.log(paseos)
 }
 
 dibujarPaseadores = (paseadores) =>{

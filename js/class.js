@@ -75,22 +75,5 @@ class Paseo{
         this.horaPaseo = horaPaseo;
         this.direccionPaseo = direccionPaseo;
     } 
-    /*     
-    obtenerTurno(){
-        console.log(this.horaPaseo[0]);
-        console.log("es un array de obtener turno");
-        switch (this.horaPaseo[0]){
-            case '1':
-            return 'Mañana'
-                break;
-            case '2':
-                return 'Mediodia'
-                break;
-            case '3':
-                return 'Tarde'
-                break;
-            default:
-                break;    
-        }
-    } */
+    
 }

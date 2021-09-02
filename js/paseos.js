@@ -4,16 +4,13 @@ $(document).ready(function() {
 });
 
 
-dibujarMascotasDisponibles = () =>{
-       //Buscar aca el problema
+dibujarMascotasDisponibles = () =>{ 
     mascotas.forEach(m => {
         owner = clientes.find(cl => cl.personaId === m.ownerId)
         $("#mascota-seleccion").append(
         `<option value="${owner.personaId}-${m.mascotaId}">${owner.nombre} - ${m.nombre} </option>`
         )
     });    
-
-    
 
     $("#seleccionarMascota").on('click', function (e) {
         e.preventDefault()
