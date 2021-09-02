@@ -6,15 +6,20 @@ mostrarFormularioPaseadores = () =>{
 
     if($('#contenedorFormPaseadores').hasClass("displayNone")){
         $('#contenedorFormPaseadores').fadeIn(2000, function(){
-            $("#titulo").html("<h1>Formulario Agregar Paseador</h1> ")
-            $('#contenedorFormPaseadores').removeClass("displayNone")    
+            ocultarFormularioClientes();  
+            $("#titulo").html("<h1>Formulario Agregar Paseador</h1>")
+            $('#contenedorFormPaseadores').removeClass("displayNone")  
+            
         })
     }else{ocultarFormularioPaseadores()}
 };    
 ocultarFormularioPaseadores = () =>{
     $('#contenedorFormPaseadores').fadeOut("slow", function(){
-        $("#titulo").html("<h1>Formulario Personas</h1> ")
         $('#contenedorFormPaseadores').addClass("displayNone")
+        if($('#contenedorFormClientes').hasClass("displayNone") && $('#contenedorFormPaseadores').hasClass("displayNone") ){
+            $("#titulo").html("<h1>Manada Unida</h1> ")
+        }
+        
     })
 }
 agregarPaseador = () =>{
@@ -50,7 +55,7 @@ crearPaseo = (mascotaId,paseadorId,clienteId,diasPaseos,horasPaseo) => {
 }
 
 dibujarPaseadores = (paseadores) =>{
-    let miHtml = document.querySelector("#paseadoresContainer");
+    let miHtml = document.querySelector("#personasContainer");
     miHtml.innerHTML = ` `;
             
     paseadores.forEach(el => {

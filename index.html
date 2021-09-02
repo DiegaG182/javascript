@@ -9,10 +9,19 @@
     <title>Alta Personas</title>
 </head>
 <body>
-    <div class="text-center" id="titulo"><h1>Paseos</h1></div>
+    
+    <nav class="navbar navbar-dark bg-dark">
+      <form class="container-fluid justify-content-start">
+        <button class="btn btn-outline-success me-2" onclick="dibujarClientes(clientes);" type="button">Mostrar Clientes</button>
+        <button class="btn btn-outline-success me-2" onclick="dibujarPaseadores(paseadores);" type="button">Mostrar Paseadores</button>
+        <button class="btn btn-outline-success me-2" id="btnAgregarPaseador" onclick="mostrarFormularioPaseadores();" type="button">Agregar Paseador</button>
+        <button class="btn btn-outline-success me-2" id="btnAgregarCliente" onclick="mostrarFormularioClientes();" type="button">Agregar Cliente</button>
+      </form>
+    </nav>
+    <div class="text-center" id="titulo"><h1>Manada Unida</h1></div>
     <!-- Agregar paseador -->
     <div class="container">
-        <button id="btnAgregarPaseador" onclick="mostrarFormularioPaseadores();">Agregar Paseador</button>
+        
     <div id="contenedorFormPaseadores" class="displayNone">    
         <form id="formulario-paseadores" >
             <div class="form-group">
@@ -56,7 +65,7 @@
     </div>
     <!-- Agregar Cliente -->
     <div class="container">
-      <button id="btnAgregarCliente" onclick="mostrarFormularioClientes();">Agregar Cliente</button>
+      
     <div id="contenedorFormClientes" class="displayNone">    
       <form id="formulario-clientes" >
           <div class="form-group">
@@ -82,14 +91,11 @@
 
   
     <div class="container">
-      <div class="row" id="paseadoresContainer">
+      <div class="row" id="personasContainer">
       <!-- Se dibujan los paseadores -->        
       </div>
     </div>
-    <div class="container">
-      <div class="row" id="clientesContainer">
-      <!-- Se dibujan los clientes -->        
-      </div>
+   
       <!-- Agregar Mascota -->
   <div class="container" id="containerMascotas">
     <div id="contenedorFormMascotas" class="displayNone">    

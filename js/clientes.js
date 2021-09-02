@@ -1,14 +1,25 @@
 let clientes = []
 let mascotas = [];
 mostrarFormularioClientes = () =>{
-     
-    if($('#contenedorFormClientes').hasClass("displayBlock")){
-        ocultarFormularioClientes()
-    }else{$('#contenedorFormClientes').addClass("displayBlock")}
-    
-}
+
+    if($('#contenedorFormClientes').hasClass("displayNone")){
+        $('#contenedorFormClientes').fadeIn(2000, function(){
+            ocultarFormularioPaseadores();
+            $("#titulo").html("<h1>Formulario Agregar Cliente</h1>")
+            $('#contenedorFormClientes').removeClass("displayNone")    
+            
+        })
+    }else{ocultarFormularioClientes()}
+};    
 ocultarFormularioClientes = () =>{
-    $('#contenedorFormClientes').removeClass("displayBlock")
+    $('#contenedorFormClientes').fadeOut("slow", function(){
+      /*    */
+        $('#contenedorFormClientes').addClass("displayNone")
+      
+        if($('#contenedorFormClientes').hasClass("displayNone") && $('#contenedorFormPaseadores').hasClass("displayNone") ){
+            $("#titulo").html("<h1>Manada Unida</h1> ")
+        }
+    })
 }
 
 agregarCliente = () => {
@@ -31,7 +42,7 @@ eliminarCliente = (id) => {
 }
 
 dibujarClientes = (clientes) =>{
-    let miHtml = document.querySelector("#clientesContainer");
+    let miHtml = document.querySelector("#personasContainer");
     miHtml.innerHTML = '';
             
     clientes.forEach(el => {
