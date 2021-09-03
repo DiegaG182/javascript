@@ -28,7 +28,7 @@ const JsonPASEOS = "https://diegag182.github.io/javascript/paseos.json"
 const mascotasAlmacenados = JSON.parse(localStorage.getItem("listaMascotas"));
 if(mascotasAlmacenados){
   for (const mascota of mascotasAlmacenados){
-    ixOfCl = clientesAlmacenados.findIndex(cl => cl.personaId === mascota.ownerId)
+    ixOfCl = clientesAlmacenados.findIndex(cl => cl.personaId == mascota.ownerId)
     mascotas.push(new Mascota(clientes[ixOfCl].personaId,mascota.nombre,mascota.edad,mascota.raza));
   }                      
 }
@@ -37,9 +37,9 @@ const paseosAlmacenados = JSON.parse(localStorage.getItem("listaPaseos"));
 if(paseosAlmacenados){
   for (const paseo of paseosAlmacenados){
     // (mascotaId,paseadorId,diaPaseo,horaPaseo,direccionPaseo)
-    ixOfPa = paseadoresAlmacenados.findIndex(cl => cl.personaId === paseo.paseadorId)
+    ixOfPa = paseadoresAlmacenados.findIndex(cl => cl.personaId == paseo.paseadorId)
     paseadorId = paseadores[ixOfPa].personaId
-    ixOfMa = mascotasAlmacenados.findIndex(ma => ma.mascotaId === paseo.mascotaId)
+    ixOfMa = mascotasAlmacenados.findIndex(ma => ma.mascotaId == paseo.mascotaId)
     mascotaId = mascotas[ixOfMa].mascotaId
     
     paseos.push(new Paseo(mascotaId,paseadorId,paseo.diaPaseo,paseo.horaPaseo,paseo.direccionPaseo));
@@ -47,7 +47,7 @@ if(paseosAlmacenados){
 }
 //Si no existen en LS, lo obtiene de un JSon estatico para inicializar datos
 
-if(paseadores.length == 0 || clientes.length == 0 || mascotas.length == 0 ||paseos.length == 0){
+if(paseadores.length == 0 || clientes.length == 0 || mascotas.length == 0 /* || paseos.length == 0 */){
     let clientesJson;
     let paseadoresJson;
     let mascotasJson;
@@ -84,7 +84,7 @@ if(paseadores.length == 0 || clientes.length == 0 || mascotas.length == 0 ||pase
       mascotasJson = respuesta;
 
       for (const mascota of mascotasJson) {
-        ixOfCl = clientesJson.findIndex(cl => cl.personaId === mascota.ownerId)  
+        ixOfCl = clientesJson.findIndex(cl => cl.personaId == mascota.ownerId)  
         mascotasR.push(new Mascota (clientes[ixOfCl].personaId,mascota.nombre,mascota.edad,mascota.raza))
       }  
       mascotas = mascotasR;  
