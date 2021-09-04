@@ -30,7 +30,7 @@ class Paseador extends Persona{
         super(nombre,edad,direccion,mail,true);
         //Disponibilidad Diaria, marca los dias que puede pasear este paseador 
         this.dispoDiaria = dispoDiaria;
-        //Disponibilidad Horaria, marca los turnos que puede pasear este paseador 
+        //Disponibilidad Horaria, marca los turnos fijos que puede pasear este paseador 
         this.dispoHoraria = dispoHoraria;
     }
     
