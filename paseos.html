@@ -9,7 +9,15 @@
     <title>Paseos</title>
 </head>
 <body>
-    <div class="text-center" ><h1>Formulario Personas</h1></div>
+    <nav class="navbar navbar-dark bg-dark">
+      <form class="container-fluid justify-content-start">
+        <button class="btn btn-outline-success me-2" onclick="location.href='index.html'" type="button">Formulario Personas</button>
+        <button class="btn btn-outline-success me-2" onclick="dibujarPaseadores(paseadores);" type="button">Mostrar Paseadores</button>
+        <button class="btn btn-outline-success me-2" id="btnAgregarPaseador" onclick="mostrarFormularioPaseadores();" type="button">Agregar Paseador</button>
+        <button class="btn btn-outline-success me-2" id="btnAgregarCliente" onclick="mostrarFormularioClientes();" type="button">Agregar Cliente</button>
+      </form>
+    </nav>
+    <div class="text-center" ><h1>Paseos</h1></div>
 
     <!-- Elegir cliente/mascota a pasear -->
     <div class="container">
