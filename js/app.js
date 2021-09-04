@@ -47,11 +47,12 @@ if(paseosAlmacenados){
 }
 //Si no existen en LS, lo obtiene de un JSon estatico para inicializar datos
 
-if(paseadores.length == 0 || clientes.length == 0 || mascotas.length == 0 /* || paseos.length == 0 */){
+if(paseadores.length == 0 || clientes.length == 0 || mascotas.length == 0 || paseos.length == 0){
     let clientesJson;
     let paseadoresJson;
     let mascotasJson;
     let paseosJson;
+
     $.get(JsonPASEADORES, function (respuesta, estado) {
     if(estado === "success"){
       paseadoresJson = respuesta;
@@ -61,7 +62,7 @@ if(paseadores.length == 0 || clientes.length == 0 || mascotas.length == 0 /* || 
       }  
     paseadores = paseadoresR  
     guardarLS("listaPaseadores", JSON.stringify(paseadores))
-    //dibujarPaseadores(paseadoresR)
+
     }
   });
   
@@ -98,12 +99,18 @@ if(paseadores.length == 0 || clientes.length == 0 || mascotas.length == 0 /* || 
       let paseosR = [];
       paseosJson = respuesta;
 
-      for (const mascota of paseosJson) {
-        ixOfCl = clientesJson.findIndex(cl => cl.personaId === mascota.ownerId)  
-        paseosR.push(new Mascota (clientes[ixOfCl].personaId,mascota.nombre,mascota.edad,mascota.raza))
+      for (const paseo of paseosJson) {
+        ixOfPa = paseadoresJson.findIndex(pa => pa.personaId == paseo.paseadorId)  
+        ixOfMa = mascotasJson.findIndex(ma => ma.mascotaId == paseo.mascotaId)
+        let ixOfCl;
+        for (const cliente of clientesJson){
+          ixOfCl = clientesJson.findIndex(cl => cl.personaId == mascotas[ixOfMa].ownerId)  
+        }
+        
+        paseosR.push(new Paseo(mascotas[ixOfMa].mascotaId,paseadores[ixOfPa].personaId,paseo.diasPaseos,paseo.horasPaseo,clientes[ixOfCl].direccion))
       }  
       paseos = paseosR;  
-      guardarLS("listaMascotas", JSON.stringify(paseos))
+      guardarLS("listaPaseos", JSON.stringify(paseos))
     }
   });    
 

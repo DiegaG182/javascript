@@ -1,4 +1,4 @@
-//Creacion de persona para app de entrega de perros
+//Creacion de persona para app de paseo de perros
 personaId = 1;
 mascotaId = 1;
 paseoId = 1;
@@ -7,7 +7,7 @@ class Persona{
         this.personaId = personaId++;
         this.nombre = nombre;
         this.edad = edad;
-        this.coordenadas = direccion;
+        this.direccion = direccion;
         this.mail = mail ;
         //Rol: true = Paseador | false = cliente
         this.rol = rol ;
@@ -19,9 +19,6 @@ class Persona{
     ObtenerRolPersona(){
     //    this.rol ? "Paseador" : "Cliente"
         if(this.rol) {return "Paseador"}else{return "Cliente"}
-    }
-    obtenerCoordenadas(){
-        return (this.coordenadas)
     }
 
 }

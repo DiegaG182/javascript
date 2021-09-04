@@ -1,1 +1,1 @@
-[{"personaId":1,"nombre":"Jesica","edad":"25","coordenadas":"calle 123","mail":"asd@asd.com","rol":false},{"personaId":12,"nombre":"bart","edad":"2","coordenadas":"calle falsa 999","mail":"asd","rol":false}]
+[{"personaId":1,"nombre":"Jesica","edad":"25","direccion":"calle 123","mail":"asd@asd.com","rol":false},{"personaId":12,"nombre":"bart","edad":"2","direccion":"calle falsa 999","mail":"bart@simps.com","rol":false}]
