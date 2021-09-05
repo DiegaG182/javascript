@@ -105,7 +105,7 @@ $.get(JsonPASEOS, function (respuesta, estado) {
       ixOfMa = mascotasJson.findIndex(ma => ma.mascotaId == paseo.mascotaId)
       ixOfCl = clientesJson.findIndex(cl => cl.personaId == mascotasJson[ixOfMa].ownerId)
       
-      paseosR.push(new Paseo(mascotas[ixOfMa].mascotaId,paseadores[ixOfPa].personaId,paseo.diaPaseo,paseo.horaPase,clientes[ixOfCl].direccion))
+      paseosR.push(new Paseo(mascotas[ixOfMa].mascotaId,paseadores[ixOfPa].personaId,paseo.diaPaseo,paseo.horaPaseo,clientes[ixOfCl].direccion))
     }  
     paseos = paseosR;  
     guardarLS("listaPaseos", JSON.stringify(paseos))

@@ -9,10 +9,10 @@
     <title>Paseos</title>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-dark menu">
       <form class="container-fluid justify-content-start">
-        <button class="btn btn-outline-success me-2" onclick="location.href='index.html'" type="button">Formulario Personas</button>
-        <button class="btn btn-outline-success me-2" onclick="dibujarPaseadores(paseadores);" type="button">Mostrar Paseadores</button>
+        <button class="btn btn-outline-success me-2" onclick="location.href='index.html'" type="button">Personas</button>
+        <button class="btn btn-outline-success me-2" onclick="dibujarPaseadoresPaseos();" type="button">Ver Paseos</button>
         <button class="btn btn-outline-success me-2" id="btnAgregarPaseador" onclick="mostrarFormularioPaseadores();" type="button">Agregar Paseador</button>
         <button class="btn btn-outline-success me-2" id="btnAgregarCliente" onclick="mostrarFormularioClientes();" type="button">Agregar Cliente</button>
       </form>
@@ -35,7 +35,7 @@
           
         </form>
       </div>   
-  </div>
+    </div>
 
     <!-- Elegir paseador -->
     <div class="container">
@@ -61,7 +61,20 @@
         </div>
     </div>
     
-    <!-- <div class="paseadoresContainer displayNone"></div> -->
+      <div class="displayNone" id="paseadoresPaseosContainer">
+        <form id="paseos-Paseadores" >
+          <div class="form-group">
+            <label for="paseador-seleccion">Seleccione el paseador a consultar</label>
+            <select  class="form-control" id="paseador-seleccion">
+              <!-- Se dibujan <option value="IdMascota">nutella</option> -->
+            </select>
+            <button type="button" class="btn btn-primary" id="seleccionarPaseadorPaseo">Seleccionar Paseador</button>
+          </div>
+        </form>
+      </div>
+    
+    <div class="container-fluid" id="paseosContainer"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/class.js"></script>

@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 dibujarMascotasDisponibles = () =>{ 
     mascotas.forEach(m => {
-        owner = clientes.find(cl => cl.personaId === m.ownerId)
+        owner = clientes.find(cl => cl.personaId == m.ownerId)
         $("#mascota-seleccion").append(
         `<option value="${owner.personaId}-${m.mascotaId}">${owner.nombre} - ${m.nombre} </option>`
         )
@@ -37,7 +37,7 @@ dibujarPaseadoresDisponibles = () =>{
     $("#seleccionarPaseador").on('click', function (e) {
         e.preventDefault()
         let paseadorId = parseInt($("#paseadores option:selected").val())
-        dibujarPaseador(paseadores.find(cl => cl.personaId === paseadorId))
+        dibujarPaseador(paseadores.find(cl => cl.personaId == paseadorId))
         
     });
    
@@ -117,3 +117,53 @@ dibujarPaseador = (p) => {
     }    
 //fin funcion
 }
+
+dibujarPaseadoresPaseos =  () => {
+    let miHtml = document.querySelector("#paseador-seleccion");
+    miHtml.innerHTML = '';
+            
+    paseadores.forEach(p => {    
+        miHtml.innerHTML +=
+        `
+        <option value="${p.personaId}">${p.nombre}</option>
+        `
+        
+    });
+    $("#paseadoresPaseosContainer").toggle()
+
+    $("#seleccionarPaseadorPaseo").on('click', function (e) {
+        e.preventDefault()
+        
+        dibujarPaseos($("#paseador-seleccion option:selected").val()); 
+        
+    });
+    
+}
+//seguir para dibujar los paseos
+dibujarPaseos = (idPaseador) => {
+    p = paseadores.find(pa => pa.personaId == idPaseador)
+    $("#paseosContainer").html("")
+    $("#paseosContainer").append(
+        `
+        <div class="box__section" id="detallePaseo">
+                <h2>${p.nombre}</h2>
+        `)            
+    
+    paseosPaseador = paseos.filter(paseo => paseo.paseadorId == idPaseador)
+    if(paseosPaseador.length > 0){
+        for (const paseo of paseosPaseador){
+            mascota = mascotas.find(ma => ma.mascotaId == paseo.mascotaId)
+            $("#detallePaseo").append(
+                `
+                <div class="box__section">
+                <h2>${paseo.diaPaseo} - ${paseo.horaPaseo} </h2>
+                <h2>${mascota.nombre}</h2>
+                <h3>${paseo.direccionPaseo}</h3>
+                <div>
+                `
+            )    
+        }
+    }else{$("#detallePaseo").append(`<h2>No posee paseos activos</h2>`)}
+    $("#paseadoresPaseosContainer").hide();
+}
+
